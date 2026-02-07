@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booleans in JavaScript</title>
+</head><body>
+    <h1>Booleans in JavaScript</h1>
+    <!-- Open console in browser developer tools -->
+    <script>
+        //Boolean is a data type that can only have two values: true or false.
+
+        console.log(3>5); // Output: false
+        console.log(10 === 10); // Output: true
+
+        console.log("Hello" === "hello"); // Output: false (case-sensitive)
+        console.log(5 == "5"); // Output: true (loose equality, type coercion) == checks for value equality with type coercion
+        console.log(5 === "5"); // Output: false (strict equality, no type coercion)  === checks for value and type equality without type coercion
+
+        const pi = 3.14;
+        console.log(pi > 3); // Output: true
+
+        const isJavaScriptFun = true;
+        console.log("Is JavaScript fun? " + isJavaScriptFun); // Output: true
+        const isSkyGreen = false;
+        console.log("Is the sky green? " + isSkyGreen); // Output: false
+
+        console.log("Type of isJavaScriptFun: " + typeof isJavaScriptFun); // Output: "boolean"
+        console.log("Type of isSkyGreen: " + typeof isSkyGreen); // Output: "boolean"
+    
+    </script>
+</html>
