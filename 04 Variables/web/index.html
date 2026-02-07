@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables in JavaScript</title>
+</head>
+<body>
+    <h1>Variables in JavaScript</h1>
+    <p>In JavaScript, variables are used to store data. You can declare a variable using the <code>var</code>, <code>let</code>, or <code>const</code> keywords.</p>
+
+    <h2>Using var</h2>
+    <h3>Name :<span id="change-to-name"></span></h3>
+    <h3>Age :<span id="change-to-age"></span></h3>
+   
+
+    <script>
+        var name = "Alice";         //avoid using var, use let or const instead
+        console.log("Name: " + name);
+
+        const age = 30;              //use const for values that won't change
+        console.log("Age: " + age);
+
+        const calculation = 5 + 10;        //you can also store the result of a calculation in a variable
+        console.log("Calculation: " + calculation);
+
+        // alert("Hello, " + name + "!"); // This will show an alert box with the message "Hello, Alice!"
+        document.getElementById("change-to-name").textContent =  name; // This will change the text content of the paragraph with id "change-to-name" to "Name: Alice
+        document.getElementById("change-to-age").textContent =  age; // This will change the text content of the paragraph with id "change-to-age" to "Age: 30"
+    </script>
+</html>
