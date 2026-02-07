@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variables in JavaScript</title>
 </head>
+
 <body>
     <h1>Variables in JavaScript</h1>
-    <p>In JavaScript, variables are used to store data. You can declare a variable using the <code>var</code>, <code>let</code>, or <code>const</code> keywords.</p>
+    <p>In JavaScript, variables are used to store data. You can declare a variable using the <code>var</code>,
+        <code>let</code>, or <code>const</code> keywords.
+    </p>
 
     <h2>Using var</h2>
     <h3>Name :<span id="change-to-name"></span></h3>
     <h3>Age :<span id="change-to-age"></span></h3>
-   
+
+    <div id="counter">
+        Quantity : <button onclick="decrementCounter()">-</button>
+        <span id="counter-value" style="min-width: 20px; display: inline-block;">1</span>
+        <button onclick="incrementCounter()">+</button>
+        
+        <button onclick="counter=1; document.getElementById('counter-value').textContent = counter; document.getElementById('warn').textContent = ''; ">Reset</button>
+        <p id="warn" style="color: red;"></p>
+
+    </div>
+
 
     <script>
         var name = "Alice";         //avoid using var, use let or const instead
@@ -25,7 +39,32 @@
         console.log("Calculation: " + calculation);
 
         // alert("Hello, " + name + "!"); // This will show an alert box with the message "Hello, Alice!"
-        document.getElementById("change-to-name").textContent =  name; // This will change the text content of the paragraph with id "change-to-name" to "Name: Alice
-        document.getElementById("change-to-age").textContent =  age; // This will change the text content of the paragraph with id "change-to-age" to "Age: 30"
+        document.getElementById("change-to-name").textContent = name; // This will change the text content of the paragraph with id "change-to-name" to "Name: Alice
+        document.getElementById("change-to-age").textContent = age; // This will change the text content of the paragraph with id "change-to-age" to "Age: 30"
+
+        let counter = 1; // Initialize counter variable
+        function incrementCounter() {
+            if (counter >= 1) { // Clear warning message if counter is above 0
+                document.getElementById("warn").textContent = "";
+            }
+            if (counter >= 10) { // Prevent counter from going above 10
+                document.getElementById("warn").textContent = "Maximum Order Quantity is 10!"; // Show warning message
+                return; // Exit the function to prevent incrementing the counter
+            }
+            counter++; // Increment the counter
+            document.getElementById("counter-value").textContent = counter; // Update the displayed counter value
+        }
+        function decrementCounter() {
+            if (counter <= 1) { // Prevent counter from going below 1
+                document.getElementById("warn").textContent = "Minimum Order Quantity is 1!"; // Show warning message
+
+            }
+            else {
+                counter--; // Decrement the counter
+                document.getElementById("counter-value").textContent = counter; // Update the displayed counter value
+            }
+        }
+
     </script>
+
 </html>
