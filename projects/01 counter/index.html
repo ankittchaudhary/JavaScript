@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Project</title>
+    <style>
+        *{
+            font-family: "futura-pt", sans-serif;
+        }
+        :root {
+            --primary-color: wheat;
+            --background-color: black;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    </style>
+</head>
+
+<body style="padding: 0; margin: 0; color: wheat; background-color: black; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div style="margin: auto;  width: 100%; max-width: 600px; min-height: 300px; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: top; align-items: center;">
+        <h2 style="font-size: 28px; font-weight: 400;">Counter App</h2>
+       
+        <span id="counter" style="font-size: 172px;">0</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; justify-items: center; align-items: center;">
+            <button id="decrease" style="padding: 8px 14px; cursor: pointer; border-radius: 25px; border: none;">-</button>
+            <button id="reset" style="padding: 8px 14px; font-size: 16px; cursor: pointer; border-radius: 8px; border: none;">Reset</button>
+            <button id="increase" style="padding: 8px 14px; cursor: pointer; border-radius: 25px; border: none;">+</button>
+        </div>  
+    </div>
+    <script>
+        const counter = document.getElementById("counter");
+        const decreaseBtn = document.getElementById("decrease");
+        const resetBtn = document.getElementById("reset");
+        const increaseBtn = document.getElementById("increase");
+
+        let count = 0;
+        counter.style.fontSize = count.toString().length;
+
+        decreaseBtn.addEventListener("click", () => {
+            count--;
+            counter.textContent = count;
+        });
+
+        resetBtn.addEventListener("click", () => {
+            count = 0;
+            counter.textContent = count;
+        });
+
+        increaseBtn.addEventListener("click", () => {
+            count++;
+            counter.textContent = count;
+        });
+    </script>
+</html>
