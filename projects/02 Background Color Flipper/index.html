@@ -15,10 +15,9 @@
     
 </head>
 
-<body style="background-color: red; padding: 0;">
+<body style="padding: 0;">
     <div style=
     "display: flex; 
-    background-color: palegoldenrod; 
     height: calc(100vh - 70px); 
     width: 100%; 
     max-width: 1440px; 
@@ -31,15 +30,13 @@
         height: fit-content; 
         min-height: 40px; 
         max-height: 60px; 
-        background-color: rebeccapurple;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         ">
-        <div class="buttons-container" style="background-color: aliceblue; height: fit-content; width: calc(100% - 40px); max-width: 800px; padding: 20px;">
+        <div class="buttons-container" style="height: fit-content; width: calc(100% - 40px); max-width: 800px; padding: 20px;">
             <div style="
-                background-color: brown;
                 width: 100%;
                 display: flex;
                 flex-direction: row;
@@ -47,20 +44,21 @@
                 justify-content: center;
                 gap: 20px;
                 ">
-                <button id="red-btn" onclick="console.log(`red-btn clicked`);" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 20px; height: 20px; background-color: red; border: white 2px solid; border-radius: 50%;"></div></button>
-                <button id="green-btn" onclick="console.log(`green-btn clicked`);" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 20px; height: 20px; background-color: green; border: white 2px solid; border-radius: 50%;"></div></button>
-                <button id="blue-btn" onclick="console.log(`blue-btn clicked`);" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 20px; height: 20px; background-color: blue; border: white 2px solid; border-radius: 50%;"></div></button>
-                <button id="yellow-btn" onclick="console.log(`yellow-btn clicked`);" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 20px; height: 20px; background-color: yellow; border: white 2px solid; border-radius: 50%;"></div></button>
-                <button id="violet-btn" onclick="console.log(`violet-btn clicked`);" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 20px; height: 20px; background-color: violet; border: white 2px solid; border-radius: 50%;"></div></button>
-                <button id="pink-btn" onclick="console.log(`pink-btn clicked`);" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 20px; height: 20px; background-color: pink; border: white 2px solid; border-radius: 50%;"></div></button>
+                <button id="red-btn" onclick="document.body.style.backgroundColor=`red`;" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 30px; height: 30px; background-color: red; border: white 2px solid; border-radius: 50%;"></div></button>
+                <button id="green-btn" onclick="document.body.style.backgroundColor=`green`;" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 30px; height: 30px; background-color: green; border: white 2px solid; border-radius: 50%;"></div></button>
+                <button id="blue-btn" onclick="document.body.style.backgroundColor=`blue`;" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 30px; height: 30px; background-color: blue; border: white 2px solid; border-radius: 50%;"></div></button>
+                <button id="yellow-btn" onclick="document.body.style.backgroundColor=`yellow`;" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 30px; height: 30px; background-color: yellow; border: white 2px solid; border-radius: 50%;"></div></button>
+                <button id="violet-btn" onclick="document.body.style.backgroundColor=`violet`;" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 30px; height: 30px; background-color: violet; border: white 2px solid; border-radius: 50%;"></div></button>
+                <button id="pink-btn" onclick="document.body.style.backgroundColor=`pink`;" style="border: none; border-radius: 100%; cursor: pointer;"><div style="width: 30px; height: 30px; background-color: pink; border: white 2px solid; border-radius: 50%;"></div></button>
             </div>
         </div>
     </div>
 
     </div>
     <script>
-        let defaultColor = "pink";
+        let defaultColor = "red";
         document.body.style.backgroundColor=defaultColor;
+        
     </script>
 </body>
 </html>
