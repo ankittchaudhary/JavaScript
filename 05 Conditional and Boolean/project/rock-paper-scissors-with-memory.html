@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+
+    <p>Rock Paper Scissors</p>
+
+    <button onclick="playRound('rock')">Rock</button>
+    <button onclick="playRound('paper')">Paper</button>
+    <button onclick="playRound('scissors')">Scissors</button>
+
+
+    <p id="result-container" style="display: block; background-color: bisque; min-height: 24px;"></p>
+
+    <p>Rounds: <span id="rounds">0</span></p>
+    <p>Wins: <span id="wins">0</span></p>
+    <p>Losses: <span id="losses">0</span></p>
+    <p>Ties: <span id="ties">0</span></p>
+    <p>High Score (Max Wins): <span id="high-score">0</span></p>
+
+
+    <br>
+    <button onclick="openResetModal()">Reset</button>
+
+    <div id="reset-modal" style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.5);
+        justify-content:center;
+        align-items:center;
+        "
+        onclick="closeModal()"
+        >
+
+        <div id="modal-container" style="
+            background:#fff;
+            padding:20px;
+            border-radius:8px;
+            min-width:250px;
+            text-align:center;
+        ">
+            <p id="msg"></p>
+            
+            <!-- Cancel button for when no stats exist -->
+            <button id="no-stats-cancel" onclick="closeModal()" style="display: none;">Close</button>
+            
+            <div id="inner-modal-container" >
+                <p>Do you want to reset your scores?</p>
+                <label>
+                    <input type="checkbox" id="modal-reset-high" defaultUnchecked>
+                    Also reset high score
+                </label>
+                <br><br>
+                <button onclick="resetGame()">Reset</button>
+                <button onclick="closeModal()">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const roundsEl = document.getElementById("rounds");
+        const winsEl = document.getElementById("wins");
+        const lossEl = document.getElementById("losses");
+        const tiesEl = document.getElementById("ties");
+        const highScoreEl = document.getElementById("high-score");
+        const resultEl = document.getElementById("result-container");
+        const msgEl = document.getElementById("msg");
+
+        let stats = JSON.parse(localStorage.getItem("gameStats"));
+
+        function openResetModal() {
+            document.getElementById("reset-modal").style.display = "flex";
+            
+            // Check if stats exist and have any activity
+            if (stats && (stats.rounds > 0 || stats.highScore > 0)) {
+                document.getElementById("inner-modal-container").style.display = "block";
+                document.getElementById("no-stats-cancel").style.display = "none";
+                msgEl.innerText = "";
+            } else {
+                document.getElementById("inner-modal-container").style.display = "none";
+                document.getElementById("no-stats-cancel").style.display = "inline-block";
+                msgEl.innerText = "No stats to reset!";
+            }
+        }
+
+        function closeModal() {
+            document.getElementById("reset-modal").style.display = "none";
+            msgEl.innerText = "";
+        }
+
+        if (!stats) {
+            stats = {
+                rounds: 0,
+                wins: 0,
+                losses: 0,
+                ties: 0,
+                highScore: 0
+            };
+        }
+
+        updateUI();
+
+        function saveStats() {
+            localStorage.setItem("gameStats", JSON.stringify(stats));
+        }
+
+        function updateUI() {
+            roundsEl.innerText = stats.rounds;
+            winsEl.innerText = stats.wins;
+            lossEl.innerText = stats.losses;
+            tiesEl.innerText = stats.ties;
+            highScoreEl.innerText = stats.highScore;
+        }
+
+        function playRound(userChoice) {
+            const choices = ["rock", "paper", "scissors"];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            stats.rounds++;
+
+            if (userChoice === computerChoice) {
+                stats.ties++;
+                resultEl.innerText = "Tie!";
+            }
+            else if (
+                (userChoice === "rock" && computerChoice === "scissors") ||
+                (userChoice === "paper" && computerChoice === "rock") ||
+                (userChoice === "scissors" && computerChoice === "paper")
+            ) {
+                stats.wins++;
+                resultEl.innerText = "You Win 🎉";
+            }
+            else {
+                stats.losses++;
+                resultEl.innerText = "You Lose 😢";
+            }
+
+            if (stats.wins > stats.highScore) {
+                stats.highScore = stats.wins;
+            }
+
+            saveStats();
+            updateUI();
+        }
+
+        function resetGame() {
+            const resetHigh = document.getElementById("modal-reset-high").checked;
+            
+            stats = {
+                rounds: 0,
+                wins: 0,
+                losses: 0,
+                ties: 0,
+                highScore: resetHigh ? 0 : stats.highScore
+            };
+
+            saveStats();
+            updateUI();
+            resultEl.innerText = "Game reset!";
+            closeModal();
+        }
+    </script>
+
+</body>
+
+</html>

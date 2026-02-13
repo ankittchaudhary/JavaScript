@@ -14,13 +14,27 @@
     <button onClick="playRound('scissors')">Scissors</button>
     <br>
     <span id="result-container"></span>
+    <br>
+    <p>No. Of Rounds Played : <span id = "no-of-rounds">0</span></p>
+    <p>Ties: <span id = "tie-count">0</span></p>
+    <p>Wins: <span id = "win-count">0</span></p>
+    <p>Losses: <span id = "loss-count">0</span></p>
 
     <script>
+        const numOfRoundContainer = document.getElementById("no-of-rounds")
+        const tieCountContainer = document.getElementById("tie-count")
+        const winCountContainer = document.getElementById("win-count")
+        const lossCountContainer = document.getElementById("loss-count")
+        let numOfRound = 0;
+        let winCount = 0;
+        let lossCount = 0;
+        let tieCount = 0;
 
         function playRound(userValue) {
             const choices = ['rock', 'paper', 'scissors'];
             
             const resultContainer = document.getElementById("result-container")
+            
             
             const randomIndex = Math.floor(Math.random() * choices.length);
             const userChoice = userValue;
@@ -28,21 +42,32 @@
             
 
             let result = "";
+            
 
             if (userChoice === computerChoice) {
                 result = "Its a Tie"
+                numOfRound += 1;
+                tieCount += 1;
+                tieCountContainer.innerText = tieCount;
             } else if (
-                (userChoice === "rock" && computerChoice === "scissors") || (userChoice === "paper" && choices === "rock") || (userChoice === "scissors" && computerChoice === "paper")) {
+                (userChoice === "rock" && computerChoice === "scissors") || (userChoice === "paper" && computerChoice === "rock") || (userChoice === "scissors" && computerChoice === "paper")) {
                 result = "You Won! 🎉";
+                numOfRound += 1;
+                winCount += 1;
+                winCountContainer.innerText = winCount;
             }
             else {
                 result = "You Lost! 😢"
+                numOfRound += 1;
+                lossCount += 1;
+                lossCountContainer.innerText = lossCount;
             }
 
             resultContainer.innerText = `You chose ${userChoice}, Computer chose ${computerChoice}. ${result}`;
+            numOfRoundContainer.innerText = numOfRound;
 
         }
-
+        
 
     </script>
 </body>
