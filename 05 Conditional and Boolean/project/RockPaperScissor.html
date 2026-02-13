@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rock Paper Scissor Game</title>
-    </head>
-    <body>
-        <p>Rock Paper Scissors</p>
-        <button>Rock</button>
-        <button>Paper</button>
-        <button>Scissors</button>
-        
-        <script>
-            const options = ['Rock', 'Paper', 'Scissors'];
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor Game</title>
+</head>
+
+<body>
+    <p>Rock Paper Scissors</p>
+    <button onClick="playRound('rock')">Rock</button>
+    <button onClick="playRound('paper')">Paper</button>
+    <button onClick="playRound('scissors')">Scissors</button>
+    <br>
+    <span id="result-container"></span>
+
+    <script>
+
+        function playRound(userValue) {
+            const choices = ['rock', 'paper', 'scissors'];
             
+            const resultContainer = document.getElementById("result-container")
             
-        </script>
-    </body>
+            const randomIndex = Math.floor(Math.random() * choices.length);
+            const userChoice = userValue;
+            const computerChoice = choices[randomIndex];
+            
+
+            let result = "";
+
+            if (userChoice === computerChoice) {
+                result = "Its a Tie"
+            } else if (
+                (userChoice === "rock" && computerChoice === "scissors") || (userChoice === "paper" && choices === "rock") || (userChoice === "scissors" && computerChoice === "paper")) {
+                result = "You Won! 🎉";
+            }
+            else {
+                result = "You Lost! 😢"
+            }
+
+            resultContainer.innerText = `You chose ${userChoice}, Computer chose ${computerChoice}. ${result}`;
+
+        }
+
+
+    </script>
+</body>
+
 </html>
