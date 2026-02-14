@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP</title>
+</head>
+<body>
+    <script>
+        //OBJECTS - grouping multiple values together //real-world entity
+        const person = {
+            name: "John",
+            age: 30,
+            city: "New York"
+        };
+        console.log(person.name)
+        console.log(person.age) //specific data
+        console.log(person)  //all data of Obj
+
+        person.name = "John cena";
+        console.log(person)
+        person.newProperty = false;
+
+        console.log(person) //new property added
+        delete person.newProperty;
+        console.log(person) // property deleted
+        console.log(typeof(person))  //obj
+
+
+        //Why objects 
+        /*
+        -> organise, grouping
+        */
+    </script>
+    
+</body>
+</html>

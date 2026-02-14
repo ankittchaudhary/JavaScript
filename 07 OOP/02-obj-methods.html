@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Methods</title>
+</head>
+<body>
+    <script>
+        //Methods are actions that can be performed on objects. Methods are functions stored as property values.
+        //this keywords refers to obj itself
+        const person = {
+            firstName : "Ankit",
+            lastName : "Chaudhary",
+            age : 23,
+
+            //Method
+            fullName : function() {
+                return this.firstName + " " + this.lastName;
+            }
+        }
+
+        console.log(person.fullName()) //use fullName() not fullName because it is a function
+    </script>
+    
+</body>
+</html>

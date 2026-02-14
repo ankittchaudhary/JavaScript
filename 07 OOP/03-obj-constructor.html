@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Constructor</title>
+</head>
+
+<body>
+    <script>
+        //Sometimes we need to create many objects of the same type.
+        //To create an object type we use an object constructor function.
+        //It is considered good practice to name constructor functions with an upper-case first letter.
+        function Person(first, last, age, eye) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eye;   //has no value
+            this.nationality = "Indian"; //has value and shared among all
+        }
+
+        const myFather = new Person("John", "Doe", 50, "blue"); //new keyword is used to create new obj
+        console.log(myFather)
+        console.log(myFather.nationality) //Indian
+
+        const myBrother = new Person('John', 'Cena', 50, 'black');
+        console.log(myBrother)
+        console.log(myBrother.nationality) //Indian
+
+        myBrother.nationality = "Russia";
+        console.log(myBrother.nationality) //Russia
+
+
+        //Adding a new Property to Constructor
+        //Person.speaks = "English"  //we cant do this
+        //console.log(myBrother.speaks) //will show undefined
+
+        //To add a new property, you must add it to the constructor function prototype:
+        Person.prototype.speaks = "English";
+        console.log(myBrother.speaks)
+
+
+        //A constructor function can also have methods:
+        function Product(id, title, price, discount) {
+            this.id = id;
+            this.title = title;
+            this.price = price;
+            this.discount = discount;
+            this.getPrice = function () {
+                return this.price - (this.price * this.discount);
+            }
+        }
+
+        const product1 = new Product(1, "Iphone 14 Pro Max", 120000, 0.1);
+        console.log(product1)
+        console.log(product1.getPrice()) //after discount price
+
+
+        //Adding a method to the constructor prototype:
+        Product.prototype.taxApplicable = function () {
+            return this.getPrice() * 0.18; //18% tax
+        }
+        console.log(product1.taxApplicable()) //tax amount
+
+        product2 = new Product(2, "Samsung Galaxy S23 Ultra", 110000, 0.15);
+        console.log(product2.taxApplicable())
+
+    </script>
+
+</body>
+
+</html>
