@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dates</title>
+</head>
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    :root{
+        --bg-color: rgb(13, 37, 9);
+        --text-color: rgb(255, 255, 255);
+    }
+    body{
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .clock-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 800px;
+        min-height: 600px;
+        /* background-color: antiquewhite; */
+    }
+
+    .clock-inner-container{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+</style>
+
+<body>
+
+    <main>
+        <div class="clock-container">
+            <div class="clock-inner-container">
+                <span id = "full-clock" style="text-align: center;"></span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        //Date objects are static. The "clock" is not "running".
+        //The computer clock is ticking, date objects are not.
+
+        /*
+        Date objects are created with the new Date() constructor.
+        There are 9 ways to create a new date object:
+        new Date()
+        new Date(date string)
+
+        new Date(year,month)
+        new Date(year,month,day)
+        new Date(year,month,day,hours)
+        new Date(year,month,day,hours,minutes)
+        new Date(year,month,day,hours,minutes,seconds)
+        new Date(year,month,day,hours,minutes,seconds,ms)
+
+        new Date(milliseconds)
+        */
+       const d = new Date();  //d is instance of Object Date
+       const clockElem = document.getElementById("full-clock")
+       clockElem.style.fontSize = "24px"
+       clockElem.innerHTML = `
+                        Full date: <strong> ${d}</strong>
+                        <br>
+                        Number Format: <strong> ${d.toLocaleString()}</strong>
+                        <br>
+                        String Format: <strong> ${d.toDateString()}</strong>
+                        <br>
+                        Only Year: <strong> ${d.getFullYear()}</strong>
+                        <br>
+                        Type Of Date: <strong> ${typeof d}</strong>
+                        <br>
+                        
+                        `;
+
+    </script>
+
+</body>
+
+</html>
