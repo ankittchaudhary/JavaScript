@@ -58,7 +58,8 @@
         console.log(product1.getPrice()) //after discount price
 
 
-        //Adding a method to the constructor prototype:
+        //Adding a METHOD to the constructor prototype:
+        //use prototype to add a method to the constructor function:
         Product.prototype.taxApplicable = function () {
             return this.getPrice() * 0.18; //18% tax
         }
@@ -67,8 +68,21 @@
         product2 = new Product(2, "Samsung Galaxy S23 Ultra", 110000, 0.15);
         console.log(product2.taxApplicable())
 
-    </script>
 
+        //BUILT IN JAVASCRIPT CONSTRUCTORS
+        new Object()   // A new Object object
+        new Array()    // A new Array object
+        new Map()      // A new Map object
+        new Set()      // A new Set object
+        new Date()     // A new Date object
+        new RegExp()   // A new RegExp object
+        new Function() // A new Function object
+
+        //Using Date
+        let todayDate = new Date();
+        console.log(todayDate.getDate()) //15
+        console.log(todayDate.getDay())  //0 for sunday
+    </script>
 </body>
 
 </html>

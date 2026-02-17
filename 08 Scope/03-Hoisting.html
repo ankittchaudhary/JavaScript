@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS HOISTING</title>
+</head>
+
+<body>
+
+    <p id = "demo"></p>
+
+    <script>
+       //Hoisting is JavaScript's default behavior of moving declarations to the top.
+       //JavaScript Declarations are Hoisted
+       //In JavaScript, a variable can be declared after it has been used.
+
+       x = 5;  //used
+      
+       elem = document.getElementById("demo");
+       elem.innerText = x; 
+
+       var x;  //declaration
+
+       //Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+
+       //The let and const Keywords
+       //Variables defined with let and const are hoisted to the top of the block, but not initialized.
+       //Meaning: The block of code is aware of the variable, but it cannot be used until it has been declared.
+
+       //Using a let variable before it is declared will result in a ReferenceError.
+       carName = "Volvo";
+       let carName;
+       //will cause reference error
+
+       //Using a const variable before it is declared, is a syntax error, so the code will simply not run.
+       carName = "Honda";
+       const carName;
+       //will cause syntaxt error
+
+    </script>
+
+</body>
+
+</html>

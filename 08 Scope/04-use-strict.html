@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use strict</title>
+</head>
+
+<body>
+
+    <p id="demo"></p>
+
+    <script>
+        //The "use strict" directive was new in ECMAScript version 5.
+        //It defines that JavaScript code should be executed in "strict mode".
+        //It is not a statement. It is a literal expression, ignored by earlier versions of JavaScript.
+
+        //With strict mode, you can not, for example, use undeclared variables.
+
+        //DECLARING STRICT MODE
+        //Strict mode is declared by adding "use strict"; to the beginning of a script or a function.
+        "use strict";
+        x = 3.14;  //will cause error
+
+        myFunction();
+
+        function myFunction() {
+            y = 3.14;   // This will also cause an error because y is not declared
+        }
+
+        x = 3.14;       // This will not cause an error.
+        myFunction();
+
+        function myFunction() {
+            "use strict";
+            y = 3.14;   // This will cause an error
+        }
+    </script>
+
+</body>
+
+</html>
