@@ -12,5 +12,7 @@ Temporal.Instant	     -> A fixed point in time, independent of time zone
 */
 
 //Temporal.now
-const now = Temporal.Now.zonedDateTimeISO();
-console.log(now)
+const { Temporal } = require("@js-temporal/polyfill");
+
+let today = Temporal.Now.plainDateISO();
+console.log(today.toString())
