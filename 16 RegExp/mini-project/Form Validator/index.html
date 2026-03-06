@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        :root {
+            --glass: rgba(255, 255, 255, 0.1);
+            --error: #ff4d4d;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #171a24, #0c0116);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .form-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 350px;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-group {
+
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: white;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: white;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .error-msg {
+            font-size: 0.75rem;
+            color: var(--error);
+            display: none;
+        }
+
+        /* Password Strength Meter */
+        #strength-meter {
+            height: 4px;
+            width: 100%;
+            background: #444;
+            margin-top: 8px;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        #strength-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 2px;
+            transition: 0.5s;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: #764ba2;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            background: #eee;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-card">
+        <h2>Join Us</h2>
+        <form id="validForm" action="#" method="post" onsubmit="return false;">
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="example@mail.com">
+                <div style="min-height: 20px;">
+                    <div class="error-msg" id="email-error">Enter a valid email.</div>
+                </div>
+
+            </div>
+            <div class="input-group">
+                <label>Phone (10 Digits)</label>
+                <input type="tel" id="phone" placeholder="9876543210">
+                <div style="min-height: 20px;">
+                    <div class="error-msg" id="phone-error">Enter a 10-digit number.</div>
+                </div>
+
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input style="position: relative" type="password" id="password" placeholder="••••••••">
+                <div style="position: absolute; top: 42px; right: 12px; transform: translateY(-30%);">
+                    <button
+                        style="font-size: 12px; border: none; outline: none; background: none; color: white; text-decoration: underline; cursor: pointer;"
+                        onclick="showPass(this)">
+                        <svg fill="#ffffff" width="18px" height="18px" viewBox="0 0 24 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M2.03381935,11.8192361 C4.16808919,6.31506648 10.3602678,3.58322297 15.8644374,5.71749281 C18.6654288,6.80359152 20.8800819,9.01824467 21.9661807,11.8192361 C22.0112731,11.9355272 22.0112731,12.0644728 21.9661807,12.1807639 C19.8319108,17.6849335 13.6397322,20.416777 8.1355626,18.2825072 C5.3345712,17.1964085 3.11991805,14.9817553 2.03381935,12.1807639 C1.98872688,12.0644728 1.98872688,11.9355272 2.03381935,11.8192361 Z M8.49709046,17.3501459 C13.4256883,19.2612348 18.9628618,16.8680219 20.9616531,12.0000475 C19.9532865,9.54665483 17.9813179,7.6108696 15.5029095,6.64985412 C10.5743117,4.73876518 5.0371382,7.13197809 3.03834692,11.9999525 C4.04671349,14.4533452 6.01868212,16.3891304 8.49709046,17.3501459 Z M12,16 C9.790861,16 8,14.209139 8,12 C8,9.790861 9.790861,8 12,8 C14.209139,8 16,9.790861 16,12 C16,14.209139 14.209139,16 12,16 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div style="min-height: 30px;">
+                    <div id="strength-meter">
+                        <div id="strength-bar"></div>
+                    </div>
+                    <div class="error-msg" id="pass-error">Min 8 chars, 1 uppercase & 1 number.</div>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        const inputs = {
+            email: { el: document.getElementById('email'), reg: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, err: 'email-error' },
+            phone: { el: document.getElementById('phone'), reg: /^\d{10}$/, err: 'phone-error' },
+            pass: { el: document.getElementById('password'), reg: /^(?=.*[A-Z])(?=.*\d).{8,}$/, err: 'pass-error' }
+        };
+
+        function showPass(btn) {
+            const passInput = document.getElementById("password");
+            if (passInput.type === "password") {
+                passInput.type = "text";
+                btn.innerHTML = `<svg width="18px" height="18px" viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 10)"><path d="m0 .5c2.53705308 3.66666667 5.37038642 5.5 8.5 5.5 3.1296136 0 5.9629469-1.83333333 8.5-5.5"/><path d="m2.5 3.423-2 2.077"/><path d="m14.5 3.423 2 2.077"/><path d="m10.5 6 1 2.5"/><path d="m6.5 6-1 2.5"/></g></svg>`
+            } else {
+                passInput.type = "password";
+                btn.innerHTML = `<svg fill="#ffffff" width="18px" height="18px" viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2.03381935,11.8192361 C4.16808919,6.31506648 10.3602678,3.58322297 15.8644374,5.71749281 C18.6654288,6.80359152 20.8800819,9.01824467 21.9661807,11.8192361 C22.0112731,11.9355272 22.0112731,12.0644728 21.9661807,12.1807639 C19.8319108,17.6849335 13.6397322,20.416777 8.1355626,18.2825072 C5.3345712,17.1964085 3.11991805,14.9817553 2.03381935,12.1807639 C1.98872688,12.0644728 1.98872688,11.9355272 2.03381935,11.8192361 Z M8.49709046,17.3501459 C13.4256883,19.2612348 18.9628618,16.8680219 20.9616531,12.0000475 C19.9532865,9.54665483 17.9813179,7.6108696 15.5029095,6.64985412 C10.5743117,4.73876518 5.0371382,7.13197809 3.03834692,11.9999525 C4.04671349,14.4533452 6.01868212,16.3891304 8.49709046,17.3501459 Z M12,16 C9.790861,16 8,14.209139 8,12 C8,9.790861 9.790861,8 12,8 C14.209139,8 16,9.790861 16,12 C16,14.209139 14.209139,16 12,16 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z"/>
+</svg>`
+            }
+        }
+
+        // Real-time Validation
+        Object.values(inputs).forEach(obj => {
+            obj.el.addEventListener('input', () => {
+                const isValid = obj.reg.test(obj.el.value);
+                document.getElementById(obj.err).style.display = isValid ? 'none' : 'block';
+                obj.el.style.borderColor = isValid ? '#2ecc71' : '#ff4d4d';
+
+                if (obj.el.id === 'password') updateStrength(obj.el.value);
+            });
+        });
+
+        function updateStrength(val) {
+            const bar = document.getElementById('strength-bar');
+            let strength = 0;
+            if (val.length > 5) strength++;
+            if (val.length > 8 && /[A-Z]/.test(val)) strength++;
+            if (/\d/.test(val) && /[!@#$%^&*]/.test(val)) strength++;
+
+            const colors = ['#ff4d4d', '#f1c40f', '#2ecc71'];
+            bar.style.width = (strength * 33.3) + '%';
+            bar.style.backgroundColor = colors[strength - 1] || '#ff4d4d';
+        }
+
+        document.getElementById('validForm').onsubmit = (e) => {
+            e.preventDefault();
+
+        };
+    </script>
+</body>
+
+</html>
