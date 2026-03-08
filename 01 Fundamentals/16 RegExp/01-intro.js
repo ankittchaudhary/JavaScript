@@ -47,3 +47,9 @@ console.log(result); //I love India!
 // using search()    -> returns index of first match
 console.log(text1.search(/India/i));  //7
 
+
+//OR
+let txt = "Black, white, red, green, blue, yellow.";
+
+let res = txt.match(/red|green|magenta/g); 
+console.log(res); //[red green] because no magenta there
