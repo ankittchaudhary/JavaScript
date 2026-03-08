@@ -33,3 +33,17 @@ Syntax of Regular Expressions:
 
 
 */
+
+//String Methods
+// using match(regex) Returns an array of results
+let text1 = "I like India!"
+let n = text1.match(/india/i);
+console.log(n) //null because case sensitive but using i modifier makes case-insensitive or use /India/ and not /india/
+
+// using replace()
+let result = text1.replace(/like/i, "love")
+console.log(result); //I love India!
+
+// using search()    -> returns index of first match
+console.log(text1.search(/India/i));  //7
+
