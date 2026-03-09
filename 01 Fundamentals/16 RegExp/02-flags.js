@@ -9,3 +9,8 @@ Flags are parameters that can modify how a regex pattern is used, such as making
 /m          Performs multiline search
 */
 
+let text = "Is this all there is?";
+const pattern = /is/g;
+
+let result = text.match(pattern);
+console.log(result); // Output: [ 'is', 'is' ] this, is, not Is because case sensitive
