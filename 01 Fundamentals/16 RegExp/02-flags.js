@@ -10,7 +10,7 @@ Flags are parameters that can modify how a regex pattern is used, such as making
 */
 
 let text = "Is this all there is?";
-const pattern = /is/g;
+const pattern = /is/g; // Global search for 'is'
 
 let result = text.match(pattern);
 console.log(result); // Output: [ 'is', 'is' ] this, is, not Is because case sensitive
